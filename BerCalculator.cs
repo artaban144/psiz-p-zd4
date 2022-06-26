@@ -24,13 +24,19 @@ namespace psiz_p_zd4
 
 			result.StartCalculation();
 
-			using (StreamReader fileOne = new StreamReader(this.filePath1))
-			using (StreamReader fileTwo = new StreamReader(this.filePath2))
+			StreamReader InputFileOne = new StreamReader(this.filePath1);
+			Stream FirstBaseInputFile = InputFileOne.BaseStream;
+
+			StreamReader InputFileTwo = new StreamReader(this.filePath2);
+			Stream SecondBaseInputFile = InputFileTwo.BaseStream;
+
+			using (BinaryReader fileOne = new BinaryReader(FirstBaseInputFile))
+			using (BinaryReader fileTwo = new BinaryReader(SecondBaseInputFile))
 			{
-				while (fileOne.Peek() >= 0)
+				for (int i = 0; i < FirstBaseInputFile.Length; i++)
 				{
-					byte charFromFirstFile = (byte)fileOne.Read();
-					byte charFromSecondFile = (byte)fileTwo.Read();
+					byte charFromFirstFile = fileOne.ReadByte();
+					byte charFromSecondFile = fileTwo.ReadByte();
 
 					result.ErrorBits += getHammingDistance(charFromFirstFile, charFromSecondFile);
 					result.TotalNumberOfBits += 8;
@@ -46,6 +52,9 @@ namespace psiz_p_zd4
 		private int getHammingDistance(int charNumber1, int charNumber2)
 		{
 			int x = charNumber1 ^ charNumber2;
+
+			Console.WriteLine(charNumber1);
+			Console.WriteLine(charNumber2);
 			int result = 0;
 
 			while (x > 0)
@@ -53,6 +62,8 @@ namespace psiz_p_zd4
 				result += x & 1;
 				x >>= 1;
 			}
+
+			Console.WriteLine(result);
 
 			return result;
 		}
