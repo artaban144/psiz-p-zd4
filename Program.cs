@@ -19,15 +19,19 @@ namespace psiz_p_zd4
             try
             {
                 BerResult berResult = (new BerCalculator(inputFileOne, inputFileTwo)).CalculateBer();
-                Console.WriteLine("Ber: " + berResult.Result);
-                Console.WriteLine("Total number of bits: " + berResult.TotalNumberOfBits);
-                Console.WriteLine("Error bits: " + berResult.ErrorBits);
+                PrintResult(berResult);
             } catch (Exception exception)
             {
                 Console.WriteLine("Error occured. Check input files.");
                 return;
             }
 
+        }
+        static void PrintResult(BerResult berResult)
+        {
+            Console.WriteLine("Ber: " + berResult.Result);
+            Console.WriteLine("Total number of bits: " + berResult.TotalNumberOfBits);
+            Console.WriteLine("Error bits: " + berResult.ErrorBits);
         }
     }
 }
