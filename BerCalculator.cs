@@ -52,9 +52,6 @@ namespace psiz_p_zd4
 		private int getHammingDistance(int charNumber1, int charNumber2)
 		{
 			int x = charNumber1 ^ charNumber2;
-
-			Console.WriteLine(charNumber1);
-			Console.WriteLine(charNumber2);
 			int result = 0;
 
 			while (x > 0)
@@ -62,8 +59,6 @@ namespace psiz_p_zd4
 				result += x & 1;
 				x >>= 1;
 			}
-
-			Console.WriteLine(result);
 
 			return result;
 		}
