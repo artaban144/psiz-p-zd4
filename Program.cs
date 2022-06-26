@@ -6,13 +6,20 @@ namespace psiz_p_zd4
     {
         static void Main(string[] args)
         {
-            SampleDataGenerator.GenerateTest1("1A.bin", "1B.bin");
-            SampleDataGenerator.GenerateTest2("2A.bin", "2B.bin");
-
             Console.WriteLine("Avaliable auto-generated Files: ");
+
+            SampleDataGenerator.GenerateTest1("1A.bin", "1B.bin");
             Console.WriteLine("1A.bin | 1B.bin");
+
+            SampleDataGenerator.GenerateTest2("2A.bin", "2B.bin");
             Console.WriteLine("2A.bin | 2B.bin");
-            Console.WriteLine("3A.bin | 3B.bin" + Environment.NewLine);
+
+            Console.WriteLine("To generate TestFiles3 uncomment lines");
+
+            // SampleDataGenerator.GenerateTest3("3A.bin", "3B.bin");
+            // Console.WriteLine("3A.bin | 3B.bin");
+
+            Console.WriteLine(Environment.NewLine);
 
             Console.Write("Enter first file path: ");
             string inputFileOne;
